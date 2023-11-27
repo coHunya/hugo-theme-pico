@@ -8,7 +8,7 @@
 </div>
 
 <div>
-	{{ $paginator := .Paginate (where .Pages "Type" "blog") }}
+	{{ $paginator := .Paginate (where .Pages "Type" "products") }}
 	{{ range $paginator.Pages }}
 	<div class="max-w-xl mx-auto">
 		{{ partial "card.html" . }}

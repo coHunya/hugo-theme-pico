@@ -11,8 +11,8 @@
 	integrity="{{ $bundle.Data.Integrity }}">
 {{ end }}
 
-{{/* Blog post page syntax highlighting */}}
-{{ if eq .Type "blog" }}
+{{/* Products page syntax highlighting */}}
+{{ if eq .Type "products" }}
 {{ $syntax := resources.Get "css/syntax.css" }}
 {{ $syntax = $syntax | resources.Minify | fingerprint "md5" }}
 <link rel="stylesheet" href="{{ $syntax.Permalink }}" crossorigin="anonymous"

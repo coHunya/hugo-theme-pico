@@ -8,9 +8,11 @@
 				{{ end }}
 				<div class="px-4 mt-3 mb-3">
 					<h2 class="m-0 inline-block overflow-ellipsis">{{ .Title | emojify }}</h2>
+					{{ if and .Params.tags (in .Params.tags "blog") }}
 					<span class="block no-underline font-thin text-primary dark:text-primary-light -mt-2">
 						{{ dateFormat "02/01/2006" .Date }} &middot; {{ i18n "reading_time" . }}
 					</span>
+					{{ end }}
 				</div>
 				<div class="px-4 mb-3 text-primary-dark overflow-ellipsis">
 					{{ with .Params.subtitle }}
