@@ -1,0 +1,56 @@
+[tagged_in]
+other = "Відзначено в"
+
+[other_tags]
+other = "Інші теги"
+
+[read_more]
+other = "Детальніше"
+
+[name]
+other = "Ім'я"
+
+[your_message]
+other = "Ваше повідомлення"
+
+[cancel]
+other = "Скасування"
+
+[submit]
+other = "Відправити"
+
+[previous]
+other = "Попередній"
+
+[next]
+other = "Наступний"
+
+[back]
+other = "Назад"
+
+[contact]
+other = "Контакти"
+
+[contact_email]
+other = "Зв'язатися електронною поштою"
+
+[latest_post]
+other = "Останній пост"
+
+[reading_time]
+other = "{{ .ReadingTime }} хв. читання"
+
+[home]
+other = "Головна"
+
+[about]
+other = "Про мене"
+
+[blog]
+other = "Блог"
+
+[present]
+other = "Зараз"
+
+[required_fields]
+other = "Обов'язкові поля"
