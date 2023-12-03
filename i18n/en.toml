@@ -46,6 +46,9 @@ other = "Home"
 [about]
 other = "About"
 
+[services]
+other = "Services"
+
 [products]
 other = "Products"
 

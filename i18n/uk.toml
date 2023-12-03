@@ -46,8 +46,11 @@ other = "Головна"
 [about]
 other = "Про мене"
 
-[products]
-other = "Продукти"
+[services]
+other = "Послуги"
+
+[blog]
+other = "Блог"
 
 [present]
 other = "Зараз"
