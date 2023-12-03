@@ -5,6 +5,7 @@
 {{ range site.Params.customJS }}
 {{ $script := resources.Get . }}
 {{ $js_bundle = $js_bundle | append $script }}
+{{ $js_bundle = $js_bundle | append (resources.Get "js/nav-menu.js") }}
 {{ end }}
 
 {{/* Default option for dark mode is to use the browser theme */}}

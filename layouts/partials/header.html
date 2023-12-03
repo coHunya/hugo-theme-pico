@@ -1,36 +1,57 @@
 {{ $page := . }}
 
-<header class="w-full flex items-center justify-between px-5 mx-auto md:pt-8 md:max-w-5xl pt-5">
+<header
+	class="bg-secondary-dark dark:bg-secondary-light fixed z-10 m-2.5 w-[calc(100%-20px)] rounded-lg p-3.5 md:m-0 md:w-full md:rounded-none md:p-5">
 	{{/* Pico responsive icon (square and text) */}}
-	<div class="flex items-center">
-		<a href="{{ .Site.Home.Permalink }}" class="inline-block mx-1 font-bold no-underline select-none">
-			<h1 class="hidden md:block font-charter tracking-normal m-0">
-				{{ .Site.Title }}
-			</h1>
+	<div class="mx-auto flex justify-between px-5 md:px-0">
+		<div class="flex items-center">
+			<a href="{{ .Site.Home.Permalink }}" class="mx-1 inline-block select-none font-bold no-underline">
+				<h1 class="font-charter m-0 hidden tracking-normal md:block">{{ .Site.Title }}</h1>
 
-			<div class="md:hidden">
-				{{ partial "icon" . }}
-			</div>
-		</a>
-		{{ if .IsTranslated }}
-		<div class="inline-block pl-2 ml-2 border-l border-gray-600">
-			{{ range .Translations }}
-			<a href="{{ .Permalink }}" class="no-underline inline-block px-1">
-				<span class="font-bold">
-					{{ .Language | upper }}
-				</span>
+				<div class="md:hidden">{{ partial "icon" . }}</div>
 			</a>
+			{{ if .IsTranslated }}
+			<div class="ml-2 inline-block border-l border-slate-700 pl-2">
+				{{ range .Translations }}
+				<a href="{{ .Permalink }}" class="inline-block px-1 no-underline">
+					<span class="font-bold"> {{ .Language | upper }} </span>
+				</a>
+				{{ end }}
+			</div>
 			{{ end }}
 		</div>
-		{{ end }}
-	</div>
 
-	<nav class="">
-		{{ range .Site.Menus.main }}
-		<a href="{{ .URL | relLangURL}}"
-			class='mx-1 md:mx-2 hover:text-primary-light dark:hover:text-primary-dark no-underline'>
-			{{ .Pre }} {{ i18n .Identifier }}
-		</a>
-		{{ end }}
-	</nav>
+		<div class="flex items-center">
+			<div class="hidden md:flex md:gap-x-8">
+				<nav class="">
+					{{ range .Site.Menus.main }}
+					<a href="{{ .URL | relLangURL}}"
+						class="hover:text-primary-light dark:hover:text-primary-dark mx-1 no-underline md:mx-2">
+						{{ .Pre	}} {{ i18n .Identifier }} </a>
+					{{ end }}
+				</nav>
+			</div>
+
+			<div class="md:hidden">
+				<button id="menuBtn" class="mb-0 flex">
+					<svg class="h-3.5 w-3.5 overflow-visible stroke-slate-700" fill="none" stroke-width="2"
+						stroke-linecap="round">
+						<path d="M0 1H14M0 7H14M0 13H14" class="origin-center transition"></path>
+						<path d="M2 2L12 12M12 2L2 12" class="origin-center transition scale-90 opacity-0 "></path>
+					</svg>
+				</button>
+
+				<div id="navMenu"
+					class="bg-secondary-dark dark:bg-secondary-light absolute inset-x-0 hidden rounded-b-lg px-9 py-3.5">
+					<nav class="flex flex-col">
+						{{ range .Site.Menus.main }}
+						<a href="{{ .URL | relLangURL}}"
+							class="dark:hover:text-primary-dark last:bg-accent last:text-secondary w-full px-3.5 py-4 text-center no-underline last:rounded-full">
+							{{ .Pre }} {{ i18n .Identifier }} </a>
+						{{ end }}
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
 </header>
