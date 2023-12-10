@@ -3,7 +3,7 @@
 <header
 	class="bg-secondary-dark dark:bg-secondary-light fixed z-10 m-2.5 w-[calc(100%-20px)] rounded-lg p-3.5 md:m-0 md:w-full md:rounded-none md:p-5">
 	{{/* Pico responsive icon (square and text) */}}
-	<div class="mx-auto flex justify-between px-5 md:px-0">
+	<div class="mx-auto flex justify-between px-5 md:max-w-5xl md:px-0">
 		<div class="flex items-center">
 			<a href="{{ .Site.Home.Permalink }}" class="mx-1 inline-block select-none font-bold no-underline">
 				<h1 class="font-charter m-0 hidden tracking-normal md:block">{{ .Site.Title }}</h1>
@@ -46,7 +46,7 @@
 					<nav class="flex flex-col">
 						{{ range .Site.Menus.main }}
 						<a href="{{ .URL | relLangURL}}"
-							class="dark:hover:text-primary-dark last:bg-accent last:text-secondary w-full px-3.5 py-4 text-center no-underline last:rounded-full">
+							class="last:bg-accent last:text-secondary w-full px-3.5 py-4 text-center no-underline last:rounded-full">
 							{{ .Pre }} {{ i18n .Identifier }} </a>
 						{{ end }}
 					</nav>
