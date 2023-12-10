@@ -1,5 +1,5 @@
 * {
-    transition: all .5s;
+    transition: all;
 }
 
 :root {
@@ -17,15 +17,15 @@
 }
 
 .dark * {
-  --color-primary: #e7e2dc;
+  --color-primary: #e9ecef;
   --color-primary-dark: #8b8b8b;
-  --color-primary-light: #e9ecef;
+  --color-primary-light: #e7e2dc;
   
   --color-secondary: #161616;
-  --color-secondary-dark: #000000;
+  --color-secondary-dark: #777368;
   --color-secondary-light: #303030;
   
-  --color-accent: #d06f32;
-  --color-accent-dark: #924e23;
-  --color-accent-light: #de9a70;
+  --color-accent: #32365c;
+  --color-accent-dark: #232640;
+  --color-accent-light: #70728d;
 }

@@ -40,6 +40,39 @@
 			<textarea rows="5" {{ printf "name=%q" .name | safeHTMLAttr }} {{ printf "id=%q" .name | safeHTMLAttr }}
 				{{ printf "placeholder=%q" .placeholder | safeHTMLAttr }} {{ $minlength }} {{ $maxlength }}
 				{{ if .required }} required {{ end }} {{ printf "class='%s'" $class | safeHTMLAttr }}></textarea>
+			{{ else if eq .type "checkbox"}}
+			<div class="grid w-full gap-6 mb-4 md:grid-cols-3">
+				{{ range .options }}
+				<div>
+					<input type="checkbox" class="hidden peer" {{ printf "id=%q" .name | safeHTMLAttr }} 
+							{{ printf "name=%q" .name | safeHTMLAttr }}
+							{{ if .required }} required {{ end }} {{ if .checked }} checked {{ end }}/>
+					<label for="{{ .name }}"
+						class="inline-flex items-center justify-between w-full p-5 border-2 rounded-lg cursor-pointer border-secondary text-gray-600 hover:bg-accent-light peer-checked:text-secondary peer-checked:bg-accent peer-checked:border-accent-dark peer-checked:hover:text-yellow-100 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-accent-light dark:bg-secondary-light dark:peer-checked:text-gray-400 dark:peer-checked:bg-accent-dark dark:peer-checked:hover:text-yellow-100">
+						<div class="block">
+							<img class="mb-2 w-7 h-7" src="{{ .icon | relURL }}" alt="{{ .name }}">
+							<div class="w-full text-lg font-semibold">{{ .label }}</div>
+							<div class="w-full text-sm">{{ .description }}}</div>
+						</div>
+					</label>
+				</div>
+				{{ end }}
+			</div>
+			{{ else if eq .type "select"}}
+			<select {{ printf "name=%q" .name | safeHTMLAttr }} {{ printf "id=%q" .name | safeHTMLAttr }} 
+				{{ if .required }} required {{ end }}
+				{{ printf "class='%s'" $class | safeHTMLAttr }}>
+				{{ range .options }}
+				<option value="{{ .value }}">{{ .label }}</option>
+				{{ end }}
+			</select>
+			{{ else if eq .type "date" }}
+			<input {{ printf "type=%q" .type | safeHTMLAttr }} {{ printf "name=%q" .name | safeHTMLAttr }}
+				{{ printf "id=%q" .name | safeHTMLAttr }} {{ printf "min=%q" .min_date | safeHTMLAttr }}
+				{{ $currDate := time.Now.Format "2006-01-02" }}
+				{{ printf "max=%q" $currDate | safeHTMLAttr }}
+				{{ if .required }} required {{ end }}
+				{{ printf "class='%s'" $class | safeHTMLAttr }}>
 			{{ else }}
 			{{ $type := .type | default "text" }}
 			<input {{ printf "type=%q" .type | safeHTMLAttr }} {{ printf "name=%q" .name | safeHTMLAttr }}
