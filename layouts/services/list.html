@@ -1,5 +1,4 @@
 {{ define "main" }}
-
 <div class="pt-[120px] pb-[80px] bg-gradient-to-b dark:from-secondary-light from-secondary-dark ">
     <div class="px-4 mx-auto text-center lg:max-w-5xl xl:max-w-6xl 2xl:max-w-screen-xl">
         <p class="text-4xl font-bold tracking-tight leading-none mx-auto md:text-6xl">
@@ -14,13 +13,12 @@
 <div class="px-4 md:px-12 mx-auto w-full xl:max-w-screen-xl">
     <div class="flex flex-wrap justify-around">
         {{ $paginator := .Paginate (where .Pages "Type" "services") }}
-        {{ range $index, $element := $paginator.Pages }}
+        {{ range $index, $element := $paginator.Pages.Reverse }}
         <div class="max-w-xl w-full border border-primary-light dark:border-secondary-light first:bg-accent m-2">
             {{- partial "price_card.html" (dict "index" $index "content" $element) -}}
         </div>
         {{ end }}
     </div>
-
 
     {{/* Pagination */}}
     {{ if or ($paginator.HasPrev) ($paginator.HasNext) }}

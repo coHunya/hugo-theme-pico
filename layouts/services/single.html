@@ -14,17 +14,27 @@
 	{{ .Content }}
 </div>
 
-{{ with .Site.GetPage "/home" }}
-{{ with .Resources.GetMatch "contact.md" }}
-{{ partial "widgets/contact_form.html" . | safeHTML }}
-{{ end }}
-{{ end }}
+<div class="bg-hex_price_light dark:bg-hex_price_dark">
+	<div class="relative z-5 mx-auto px-4 py-8 text-center lg:py-16">
+		<h1 class="mb-4 text-4xl font-bold leading-none tracking-tight text-red-950 dark:text-white md:text-5xl lg:text-6xl">
+			&#8372;{{ .Params.price }}
+		</h1>
+
+		<p class="mb-8 text-lg font-normal text-gray-500 dark:text-gray-200 sm:px-16 lg:px-48 lg:text-xl">{{ .Title }}</p>
+
+		<form class="mx-auto w-full max-w-md">
+			<a href="{{ "#contact" | relLangURL}}" class="no-underline inline-flex items-center justify-between  bg-rose-100 px-1 py-1 hover:bg-rose-200 dark:bg-accent-dark dark:hover:bg-accent-light">
+				<span class="bg-accent px-4 py-1.5 text-xl text-white">Замовити</span>
+			</a>
+		</form>
+	</div>
+	
+</div>
 
 {{/* Previous / Next section */}}
 {{ if or (.PrevInSection) (.NextInSection) }}
 <hr class="mb-6 mt-24">
 {{ end }}
-
 
 <div class="flex flex-wrap justify-between items-center">
 	{{ if .PrevInSection }}

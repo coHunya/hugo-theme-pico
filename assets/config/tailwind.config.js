@@ -83,6 +83,11 @@ module.exports = {
 				accent: 'var(--color-accent)',
 				'accent-dark': 'var(--color-accent-dark)',
 				'accent-light': 'var(--color-accent-light)'
+			},
+			backgroundImage:
+			{
+			  'hex_price_light': "url('/backgrounds/hex_price_light.svg')",
+			  'hex_price_dark': "url('/backgrounds/hex_price_dark.svg')"
 			}
 		},
 		boxShadow: {
