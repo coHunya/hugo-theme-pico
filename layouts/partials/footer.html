@@ -1,15 +1,24 @@
-<footer class="w-full h-24 text-center text-xs text-gray-400 bg-primary dark:bg-secondary-light relative">
-	<div class="w-full px-6 md:pt-0 md:mx-auto md:max-w-5xl flex flex-1 space-between items-center absolute-center">
-		<a href="{{ .Site.Home.Permalink }}" class="absolute">
-			{{ partial "icon" . }}
-		</a>
-
-		<div class="h-full flex-1">
-			<span class="select-none">
-				Powered by
+<footer class="border-t border-[#cbc7bb] text-xs text-gray-400 p-4">
+	<div class="mx-auto pr-2 md:max-w-5xl md:grid md:grid-cols-3 md:items-center">
+		<div class="flex justify-center justify-self-start">
+			<a href="{{ .Site.Home.Permalink }}" class="">
+				{{- partial "icon" . -}}
+			</a>
+		</div>
+		<div class="flex justify-self-center justify-center py-4">
+			<span>Powered by
 				<a href="https://gohugo.io/" class="text-gray-400 hover:text-gray-200 no-underline">Hugo</a>
 				in {{ time.Now.Year }}
 			</span>
+		</div>
+		<div class="flex justify-self-end justify-center">
+			{{- range .Site.Params.social -}}
+			<a href="{{ .url }}" title="{{ .name }}" class="ms-5 first:ms-0 text-gray-500 hover:text-gray-900 dark:hover:text-white"
+			{{ if .blank }} target="_blank" {{ end }} {{ if strings.HasPrefix .url "http" }} rel="noopener" {{ end }}>
+				{{- $class := "w-5 h-5 fill-primary" -}}
+				{{- partial .icon $class -}}
+			</a>
+			{{- end -}}
 		</div>
 	</div>
 </footer>
