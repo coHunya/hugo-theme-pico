@@ -72,17 +72,17 @@ module.exports = {
 					800: '#276749',
 					900: '#22543d'
 				},
-				primary: 'var(--color-primary)',
-				'primary-dark': 'var(--color-primary-dark)',
-				'primary-light': 'var(--color-primary-light)',
+				primary: 'rgb(var(--color-primary) / <alpha-value>)',
+				'primary-dark': 'rgb(var(--color-primary-dark) / <alpha-value>)',
+				'primary-light': 'rgb(var(--color-primary-light) / <alpha-value>)',
 
-				secondary: 'var(--color-secondary)',
-				'secondary-dark': 'var(--color-secondary-dark)',
-				'secondary-light': 'var(--color-secondary-light)',
+				secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+				'secondary-dark': 'rgb(var(--color-secondary-dark) / <alpha-value>)',
+				'secondary-light': 'rgb(var(--color-secondary-light) / <alpha-value>)',
 
-				accent: 'var(--color-accent)',
-				'accent-dark': 'var(--color-accent-dark)',
-				'accent-light': 'var(--color-accent-light)'
+				accent: 'rgb(var(--color-accent) / <alpha-value>)',
+				'accent-dark': 'rgb(var(--color-accent-dark) / <alpha-value>)',
+				'accent-light': 'rgb(var(--color-accent-light) / <alpha-value>)'
 			},
 			backgroundImage:
 			{
