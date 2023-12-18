@@ -1,0 +1,20 @@
+{{- define "main" -}}
+<div class="mx-auto text-center mb-16">
+    <p class="text-4xl font-bold tracking-tight leading-none md:text-6xl">
+        {{ .Params.myTitle }}
+    </p>
+    <p class="text-lg text-gray-600 dark:text-gray-400 lg:text-xl">
+        {{ .Params.subtitle }}
+    </p>
+</div>
+
+<div class="flex flex-wrap">
+    <div class="mb-6 w-full lg:pr-28 md:mb-0 lg:max-w-sm lg:w-1/4">
+        {{- partial "contact_list.html" . -}}
+    </div>
+    <hr class="mt-16 w-full lg:hidden">
+    <div class="w-full lg:w-3/4">
+        {{- partial "widgets/contact_form.html" . -}}
+    </div>
+</div>
+{{- end -}}
