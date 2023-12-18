@@ -2,9 +2,9 @@
 <html lang='{{ .Site.LanguageCode }}' class='{{ if eq .Site.Params.darkmode "always" }} dark {{ end }}'>
 
 <head>
-	{{ partial "head/metadata.html" . }}
-	{{ partial "head/js.html" . }}
-	{{ partial "head/css.html" . }}
+	{{- partial "head/metadata.html" . -}}
+	{{- partial "head/js.html" . -}}
+	{{- partial "head/css.html" . -}}
 </head>
 
 <body class="min-h-screen bg-secondary-light dark:bg-secondary text-primary relative pb-24">
@@ -14,15 +14,16 @@
 	{{- partial "dev/size-indicator.html" . -}}
 	{{- partial "header.html" . -}}
 
-	{{ $mainClass := "mx-auto px-4 md:max-w-4xl pt-[70px] md:pt-[77px]" }}
-	{{ if .IsHome }}
-	{{ $mainClass = printf "%s lg:max-w-5xl xl:max-w-6xl 2xl:max-w-screen-xl" $mainClass}}
-	{{ else if eq .RelPermalink "/services/" }}
-	{{ $mainClass = "" }}
-	{{ end }}
+	{{- $mainClass := "mx-auto px-4 md:max-w-4xl pt-[70px] md:pt-[77px]" -}}
+	{{- if eq .RelPermalink "/services/" -}}
+	{{- $mainClass = "" -}}
+	{{- else if or (.IsHome) (.IsSection) -}}
+	{{- $mainClass = printf "%s lg:max-w-5xl xl:max-w-6xl 2xl:max-w-screen-xl" $mainClass -}}
+	{{- end -}}
 
 	<main class="w-full overflow-x-hidden md:overflow-visible {{ $mainClass }}">
-		{{- block "main" . }}{{- end }}
+		{{- block "main" . -}}{{- end -}}
+		<div class="mt-12"></div>
 	</main>
 
 	<div class="absolute bottom-0 w-full">
