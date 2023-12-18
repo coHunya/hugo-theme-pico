@@ -49,6 +49,9 @@ other = "About"
 [services]
 other = "Services"
 
+[request]
+other = "Order now"
+
 [products]
 other = "Products"
 

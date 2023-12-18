@@ -49,6 +49,9 @@ other = "Обо мне"
 [services]
 other = "Услуги"
 
+[request]
+other = "Заказать"
+
 [blog]
 other = "Блог"
 
