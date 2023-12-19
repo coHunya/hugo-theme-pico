@@ -1,17 +1,16 @@
-document.addEventListener('DOMContentLoaded', function () {
-    try {
-        let formElements = getFormElements();
-        let asterisk = '<span class="text-red-500 font-normal">*</span>';
+try {
+    let formElements = getFormElements();
+    let asterisk = '<span class="text-red-500 font-normal">*</span>';
 
-        formElements.checkboxes.forEach(function (checkbox) {
-            checkbox.addEventListener('change', function () {
-                handleCheckboxChange(this, formElements, asterisk);
-            });
+    formElements.checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+            handleCheckboxChange(this, formElements, asterisk);
         });
-    } catch (error) {
-        console.error(error);
-    }
-});
+    });
+} catch (error) {
+    console.error(error);
+}
+
 
 function getFormElements() {
     let checkboxes = document.querySelectorAll('input[type="checkbox"]');

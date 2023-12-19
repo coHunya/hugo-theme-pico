@@ -5,19 +5,29 @@
 {{- range site.Params.customJS -}}
 {{- $script := resources.Get . -}}
 {{- $js_bundle = $js_bundle | append $script -}}
-{{- end }}
+{{- end -}}
 
 {{- $js_bundle = $js_bundle | append (resources.Get "js/nav-menu.js") -}}
-{{- $js_bundle = $js_bundle | append (resources.Get "js/input_form_handler.js") -}}
 
 {{/* Default option for dark mode is to use the browser theme */}}
 {{- if eq (isset .Site.Params "darkmode") false -}}
 {{- $js_bundle = $js_bundle | append (resources.Get "js/dark-mode.js") -}}
 {{- end -}}
 
-{{- if gt (len $js_bundle) 0 -}}
+{{/* Local js scripts for the selected pages */}}
+{{- $jslocal := false -}}
 
-{{- $js_bundle = $js_bundle | resources.Concat "js/pico.min.js" | fingerprint "md5" -}}
-<script src="{{ $js_bundle.Permalink }}" intergrity="{{ $js_bundle.Data.Integrity }}" crossorigin="anonymous"></script>
+{{- if or (eq .Params.widget "contact_form") (.IsHome) -}}
+{{- $js_bundle = $js_bundle | append (resources.Get "js/input_form_handler.js") -}}
+{{- $jslocal = true }}
+{{ end }}
+
+{{- if gt (len $js_bundle) 0 -}}
+{{- $jsName := "js/jorni.min.js" -}}
+{{- if $jslocal -}}
+{{- $jsName = printf "js/jorni_%s.min.js" (delimit (shuffle (seq 1 9)) "") -}}
+{{- end -}}
+{{- $js_bundle = $js_bundle | resources.Concat $jsName | fingerprint "md5" -}}
+<script src="{{ $js_bundle.Permalink }}" intergrity="{{ $js_bundle.Data.Integrity }}" crossorigin="anonymous" defer></script>
 
 {{- end -}}
