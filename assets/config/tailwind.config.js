@@ -87,7 +87,9 @@ module.exports = {
 			backgroundImage:
 			{
 			  'hex_price_light': "url('/backgrounds/hex_price_light.svg')",
-			  'hex_price_dark': "url('/backgrounds/hex_price_dark.svg')"
+			  'hex_price_dark': "url('/backgrounds/hex_price_dark.svg')",
+			  'service_light': "url('/backgrounds/service_light.svg')",
+			  'service_dark': "url('/backgrounds/service_dark.svg')",
 			}
 		},
 		boxShadow: {

@@ -3,29 +3,29 @@
 }
 
 :root {
-  --color-primary: 33 33 33;
-  --color-primary-dark: 26 26 26;
-  --color-primary-light: 72 72 72;
+  --color-primary: 33 33 33;  // #212121;
+  --color-primary-dark: 26 26 26; // #000000;
+  --color-primary-light: 72 72 72; // #484848
 
-  --color-secondary: 203 199 187;
-  --color-secondary-light: 231 226 220;
-  --color-secondary-dark: 216 190 175;
+  --color-secondary: 203 199 187; // #cbc7bb
+  --color-secondary-light: 231 226 220; // #d8beaf
+  --color-secondary-dark: 216 190 175; // #e7e2dc;
 
-  --color-accent: 152 29 37;
-  --color-accent-dark: 106 20 26;
-  --color-accent-light: 183 97 102;
+  --color-accent: 152 29 37;    // #981d25;
+  --color-accent-dark: 106 20 26; // #6a141a;
+  --color-accent-light: 183 97 102; // #b76166;
 }
 
 .dark * {
-  --color-primary: 233 236 239;
-  --color-primary-dark: 139 139 139;
-  --color-primary-light: 231 226 220;
+  --color-primary: 233 236 239;  // #e9ecef;
+  --color-primary-dark: 139 139 139; // #8b8b8b;
+  --color-primary-light: 231 226 220; // #e7e2dc
   
-  --color-secondary: 22 22 22;
-  --color-secondary-dark: 119 115 104;
-  --color-secondary-light: 48 48 48;
+  --color-secondary: 22 22 22; // #161616;
+  --color-secondary-dark: 119 115 104; // #777368;
+  --color-secondary-light: 48 48 48; // #303030;
   
-  --color-accent: 50 54 92;
-  --color-accent-dark: 35 38 64;
-  --color-accent-light: 112 114 141;
+  --color-accent: 50 54 92;  // #32365c;
+  --color-accent-dark: 35 38 64;  // #232640;
+  --color-accent-light: 112 114 141; // #70728d;
 }

@@ -12,7 +12,7 @@
 {{ end }}
 
 {{/* Products page syntax highlighting */}}
-{{ if eq .Type "products" }}
+{{ if eq .Type "services" }}
 {{ $syntax := resources.Get "css/syntax.css" }}
 {{ $syntax = $syntax | resources.Minify | fingerprint "md5" }}
 <link rel="stylesheet" href="{{ $syntax.Permalink }}" crossorigin="anonymous"
