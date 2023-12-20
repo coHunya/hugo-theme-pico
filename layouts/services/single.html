@@ -37,23 +37,25 @@
 
 <div class="flex justify-between">
 	{{- if .NextInSection -}}
-	<div class="">
-		<a class="mr-4 no-underline" href="{{ .NextInSection.Permalink }}">
-			<img src="{{ "/icons/top_arrow.svg" | relURL }}" class="transform -rotate-90 inline-block">
+	<div>
+		<a class="no-underline" href="{{ .NextInSection.Permalink }}">
+			{{- $class := "transform -rotate-90 w-4 h-4 inline-block fill-accent-light" -}}
+			{{- partial "svgs/icons/tailless_arrow.svg" $class -}}
 		</a>
-		<a href="{{ .NextInSection.Permalink }}">
-			<span class="underline">{{ .NextInSection.Title }}</span>
+		<a class="no-underline" href="{{ .NextInSection.Permalink }}">
+			<span class="hover:underline">{{ .NextInSection.Title }}</span>
 		</a>
 	</div>
 	{{- end -}}
 
 	{{- if .PrevInSection -}}
 	<div class="{{ if .NextInSection }}{{else}}ml-auto{{ end }}">
-		<a href="{{ .PrevInSection.Permalink }}">
-			<span class="underline">{{ .PrevInSection.Title }}</span>
+		<a class="no-underline" href="{{ .PrevInSection.Permalink }}">
+			<span class="hover:underline">{{ .PrevInSection.Title }}</span>
 		</a>
-		<a class="ml-4 no-underline" href="{{ .PrevInSection.Permalink }}">
-			<img src="{{ "/icons/top_arrow.svg" | relURL }}" class="transform rotate-90 inline-block">
+		<a class="no-underline" href="{{ .PrevInSection.Permalink }}">
+			{{- $class := "transform rotate-90 w-4 h-4 inline-block fill-accent-light" -}}
+			{{- partial "svgs/icons/tailless_arrow.svg" $class -}}
 		</a>
 	</div>
 	{{- end -}}

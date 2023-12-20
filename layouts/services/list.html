@@ -28,11 +28,13 @@
     <div class="flex justify-between items-center">
         {{- with $paginator.Prev -}}
         <div class="flex-1">
-            <a class="no-underline mr-4" href="{{ .URL }}">
-                <img src="{{ "/icons/top_arrow.svg" | relURL }}" class="transform -rotate-90 inline-block">
+            <a class="no-underline" href="{{ .URL }}">
+                {{- $class := "transform -rotate-90 w-4 h-4 inline-block fill-accent-light" -}}
+                {{- partial "svgs/icons/tailless_arrow.svg" $class -}}
+                {{/*  <img src="{{ "/icons/top_arrow.svg" | relURL }}" class="transform -rotate-90 inline-block">  */}}
             </a>
             <a href="{{ .URL }}">
-                <span class="">{{ i18n "previous" | title }}</span>
+                <span class="hover:underline">{{ i18n "previous" | title }}</span>
             </a>
         </div>
         {{- end -}}
@@ -44,10 +46,11 @@
         {{- with $paginator.Next -}}
         <div class="flex-1 text-right">
             <a href="{{ .URL }}">
-                <span class="">{{ i18n "next" | title }}</span>
+                <span class="hover:underline">{{ i18n "next" | title }}</span>
             </a>
-            <a class="no-underline ml-4" href="{{ .URL }}">
-                <img src="{{ "/icons/top_arrow.svg" | relURL }}" class="transform rotate-90 inline-block">
+            <a class="no-underline" href="{{ .URL }}">
+                {{- $class := "transform rotate-90 w-4 h-4 inline-block fill-accent-light" -}}
+                {{- partial "svgs/icons/tailless_arrow.svg" $class -}}
             </a>
         </div>
         {{- end -}}
