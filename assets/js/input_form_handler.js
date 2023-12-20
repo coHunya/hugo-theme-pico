@@ -11,10 +11,9 @@ try {
     console.error(error);
 }
 
-
 function getFormElements() {
     let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    let placeBirth = document.querySelector('select[name="place_birth"]');
+    let placeBirth = document.querySelector('input[name="place_birth"]');
     let dateBirth = document.querySelector('input[name="date_birth"]');
     let message = document.querySelector('textarea[name="message"]');
     let otherCheckbox = document.querySelector('input[name="other"]');

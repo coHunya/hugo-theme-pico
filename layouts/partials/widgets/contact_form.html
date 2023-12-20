@@ -49,7 +49,7 @@
 						<div class="block">
 							<img class="mb-2 w-7 h-7" src="{{ .icon | relURL }}" alt="{{ .name }}">
 							<div class="w-full text-lg font-semibold">{{ .label }}</div>
-							<div class="w-full text-sm">{{ .description }}}</div>
+							<div class="w-full text-sm">{{ .description }}</div>
 						</div>
 					</label>
 				</div>
@@ -67,6 +67,13 @@
 			<input {{ printf "type=%q" .type | safeHTMLAttr }} {{ printf "name=%q" .name | safeHTMLAttr }}
 				{{ printf "id=%q" .name | safeHTMLAttr }} {{ printf "min=%q" .min_date | safeHTMLAttr }}
 				{{ $currDate := time.Now.Format "2006-01-02" }}
+				{{ printf "max=%q" $currDate | safeHTMLAttr }}
+				{{ if .required }} required {{ end }}
+				{{ printf "class='%s'" $class | safeHTMLAttr }}>
+			{{- else if eq .type "datetime-local" -}}
+			<input {{ printf "type=%q" .type | safeHTMLAttr }} {{ printf "name=%q" .name | safeHTMLAttr }}
+				{{ printf "id=%q" .name | safeHTMLAttr }} {{ printf "min=%q" .min_date | safeHTMLAttr }}
+				{{ $currDate := time.Now.Format "2006-01-02T15:04" }}
 				{{ printf "max=%q" $currDate | safeHTMLAttr }}
 				{{ if .required }} required {{ end }}
 				{{ printf "class='%s'" $class | safeHTMLAttr }}>
