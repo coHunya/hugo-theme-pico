@@ -1,34 +1,37 @@
 {{/* Google Analytics */}}
 {{- template "_internal/google_analytics.html" . -}}
 
-{{- $js_bundle := slice -}}
+{{- $js_bundle_immediate := slice -}}
 {{- $js_bundle_defer := slice -}}
+{{- $js_bundle_local := slice -}}
+
 {{- range site.Params.customJS -}}
 {{- $script := resources.Get . -}}
-{{- $js_bundle = $js_bundle | append $script -}}
+{{- $js_bundle_immediate = $js_bundle_immediate | append $script -}}
 {{- end -}}
 
+{{/* Defered js scripts for all pages */}}
 {{/* Default option for dark mode is to use the browser theme */}}
 {{- if eq (isset .Site.Params "darkmode") false -}}
-{{- $js_bundle = $js_bundle | append (resources.Get "js/dark-mode.js") -}}
+{{- $js_bundle_immediate = $js_bundle_immediate | append (resources.Get "js/dark-mode.js") -}}
 {{- end -}}
 
-{{/* Local js scripts for the selected pages */}}
-{{- $jsLocal := false -}}
-
+{{/* Immediate js scripts for all pages */}}
 {{- $js_bundle_defer = $js_bundle_defer | append (resources.Get "js/nav-menu.js") -}}
+
+{{/* Local and DEFERED js scripts for the selected pages */}}
 {{- if or (eq .Params.widget "contact_form") (.IsHome) -}}
-{{- $js_bundle_defer = $js_bundle_defer | append (resources.Get "js/input_form_handler.js") -}}
-{{- $jsLocal = true -}}
+{{- $js_bundle_local = $js_bundle_local | append (resources.Get "js/input_form_handler.js") -}}
 {{- end -}}
 
-{{- if gt (len $js_bundle) 0 -}}
-{{- $jsName := "js/jorni.min.js" -}}
-{{- if $jsLocal -}}
-{{- $jsName = printf "js/jorni_%s.min.js" (delimit (shuffle (seq 1 9)) "") -}}
-{{- end -}}
-{{- $js_bundle = $js_bundle | resources.Concat "js/jorni.min.js" | fingerprint "md5" -}}
-<script src="{{ $js_bundle.Permalink }}" intergrity="{{ $js_bundle.Data.Integrity }}" crossorigin="anonymous" ></script>
-{{- $js_bundle_defer = $js_bundle_defer | resources.Concat $jsName | fingerprint "md5" -}}
+{{- $js_bundle_immediate = $js_bundle_immediate | resources.Concat "js/jorni_imm.min.js" | fingerprint "md5" -}}
+<script src="{{ $js_bundle_immediate.Permalink }}" intergrity="{{ $js_bundle_immediate.Data.Integrity }}" crossorigin="anonymous"></script>
+
+{{- $js_bundle_defer = $js_bundle_defer | resources.Concat "js/jorni_def.min.js" | fingerprint "md5" -}}
 <script src="{{ $js_bundle_defer.Permalink }}" intergrity="{{ $js_bundle_defer.Data.Integrity }}" crossorigin="anonymous" defer></script>
+
+{{- if gt (len $js_bundle_local) 0 -}}
+{{/*  {{- $jsName := printf "js/jorni_%s.min.js" (delimit (shuffle (seq 1 9)) "") -}}  */}}
+{{- $js_bundle_local = $js_bundle_local | resources.Concat "js/jorni_loc.min.js"| fingerprint "md5" -}}
+<script src="{{ $js_bundle_local.Permalink }}" intergrity="{{ $js_bundle_local.Data.Integrity }}" crossorigin="anonymous" defer></script>
 {{- end -}}

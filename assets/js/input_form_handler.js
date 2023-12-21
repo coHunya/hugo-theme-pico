@@ -7,6 +7,16 @@ try {
             handleCheckboxChange(this, formElements, asterisk);
         });
     });
+
+    // Manually trigger a 'change' event on each checkbox when the reset is clicked
+    let resetBtn = document.querySelector('input[type="reset"]');
+    resetBtn.addEventListener('click', function () {
+        setTimeout(function () {
+            formElements.checkboxes.forEach(function (checkbox) {
+                checkbox.dispatchEvent(new Event('change'));
+            });
+        }, 0);
+    });
 } catch (error) {
     console.error(error);
 }
