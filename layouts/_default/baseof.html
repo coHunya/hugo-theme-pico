@@ -15,7 +15,7 @@
 	{{- partial "header.html" . -}}
 
 	{{- $mainClass := "mx-auto px-4 md:max-w-4xl pt-[70px] md:pt-[77px]" -}}
-	{{- if eq .RelPermalink "/services/" -}}
+	{{- if eq .RelPermalink ("/services/" | relLangURL) -}}
 	{{- $mainClass = "" -}}
 	{{- else if or (.IsHome) (.IsSection) -}}
 	{{- $mainClass = printf "%s lg:max-w-5xl xl:max-w-6xl 2xl:max-w-screen-xl" $mainClass -}}
