@@ -1,8 +1,8 @@
 <section class="p-4 md:p-8">
-	<h2 class="text-4xl my-5 {{ if eq .index 0}}text-secondary-light dark:text-primary{{ end }}">{{ .content.Title | emojify }}</h2>
+	<h1 class="text-4xl my-5 {{ if eq .index 0}}text-secondary-light dark:text-primary{{ end }}">{{ .content.Title | emojify }}</h1>
 	<div class="flex items-baseline {{ if eq .index 0 }}text-secondary-light dark:text-primary{{ end }}">
-		<span class="text-3xl font-semi-bold">&#8372;</span>
-		<span class="text-5xl font-light tracking-tight">{{ .content.Params.price }}</span>
+		<span class="font-serif text-3xl font-semi-bold">&#8372;</span>
+		<span class="font-serif text-5xl font-light tracking-tight">{{ .content.Params.price }}</span>
 	</div>
 	<p class="mt-5 text-gray-600 dark:text-gray-400 {{ if eq .index 0 }}text-secondary {{ end }}">
 		{{ with .content.Params.subtitle }}
