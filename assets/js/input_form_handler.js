@@ -61,14 +61,14 @@ function handleCheckboxChange(checkbox, formElements, asterisk) {
     });
 
     if (!isAnyCheckboxChecked) {
-        removeAsterisks(formElements, asterisk);
+        handleOtherCheckboxSelected(formElements, asterisk);
     }
 }
 
 function handleOtherCheckboxSelected(formElements, asterisk) {
-    formElements.placeBirth = false;
-    formElements.dateBirth = false;
-    formElements.message = true;
+    formElements.placeBirth.required = false;
+    formElements.dateBirth.required = false;
+    formElements.message.required = true;
 
     formElements.placeBirthLabel.innerHTML = formElements.placeBirthLabel.innerHTML.replace(asterisk, '');
     formElements.dateBirthLabel.innerHTML = formElements.dateBirthLabel.innerHTML.replace(asterisk, '');
@@ -84,9 +84,9 @@ function handleOtherCheckboxSelected(formElements, asterisk) {
 }
 
 function handleOtherCheckboxDeselected(formElements, asterisk) {
-    formElements.placeBirth = true;
-    formElements.dateBirth = true;
-    formElements.message = false;
+    formElements.placeBirth.required = true;
+    formElements.dateBirth.required = true;
+    formElements.message.required = false;
 
     if (!formElements.placeBirthLabel.innerHTML.includes(asterisk)) {
         formElements.placeBirthLabel.innerHTML += asterisk;
@@ -97,10 +97,4 @@ function handleOtherCheckboxDeselected(formElements, asterisk) {
     formElements.messageLabel.innerHTML = formElements.messageLabel.innerHTML.replace(asterisk, '');
 
     formElements.otherCheckbox.checked = false;
-}
-
-function removeAsterisks(formElements, asterisk) {
-    formElements.placeBirthLabel.innerHTML = formElements.placeBirthLabel.innerHTML.replace(asterisk, '');
-    formElements.dateBirthLabel.innerHTML = formElements.dateBirthLabel.innerHTML.replace(asterisk, '');
-    formElements.messageLabel.innerHTML = formElements.messageLabel.innerHTML.replace(asterisk, '');
 }

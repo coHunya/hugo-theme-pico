@@ -39,13 +39,14 @@
 				{{ if .required }} required {{ end }} {{ printf "class='%s'" $class | safeHTMLAttr }}></textarea>
 			{{- else if eq .type "checkbox" -}}
 			<div class="grid w-full gap-6 mb-4 md:grid-cols-3">
+				{{ $input := .}}
 				{{- range .options -}}
 				<div {{ printf "id='%s-link'" .name | safeHTMLAttr }} class="scroll-mt-[76px]">
 					<input type="checkbox" class="hidden peer" {{ printf "id=%q" .name | safeHTMLAttr }} 
 							{{ printf "name=%q" .name | safeHTMLAttr }}
-							{{ if .required }} required {{ end }} {{ if .checked }} checked {{ end }}/>
+							{{ if $input.required }} required {{ end }} {{ if .checked }} checked {{ end }}/>
 					<label for="{{ .name }}"
-						class="inline-flex items-center justify-between w-full p-5 border-2 rounded-lg cursor-pointer border-secondary text-gray-600 hover:bg-accent-light peer-checked:text-secondary peer-checked:bg-accent peer-checked:border-accent-dark peer-checked:hover:text-yellow-100 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-accent-light dark:bg-secondary-light dark:peer-checked:text-gray-400 dark:peer-checked:bg-accent-dark dark:peer-checked:hover:text-yellow-100">
+						class="inline-flex items-center justify-between w-full p-5 border-2 rounded-lg cursor-pointer border-secondary text-gray-600 md:hover:bg-accent-light peer-checked:text-secondary peer-checked:bg-accent peer-checked:border-accent-dark peer-checked:hover:text-yellow-100 dark:border-gray-700 dark:text-gray-400 md:dark:hover:bg-accent-light dark:bg-secondary-light dark:peer-checked:text-gray-400 dark:peer-checked:bg-accent-dark dark:peer-checked:hover:text-yellow-100">
 						<div class="block">
 							{{- $class := "mb-2 w-7 h-7 fill-current" -}}
 							{{- partial .icon $class -}}
