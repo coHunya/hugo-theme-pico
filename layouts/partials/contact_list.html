@@ -16,7 +16,7 @@
                 {{ if .blank }} target="_blank" {{ end }} {{ if strings.HasPrefix .url "http" }} rel="noopener" {{ end }}>
                     {{- if not (eq .name "email") -}}
                     {{- with urls.Parse .url -}}
-                    {{- .Host -}}
+                    {{- slicestr .Path 1 -}}
                     {{- end -}}
                     {{- else -}}
                     {{- $page.Params.email -}}

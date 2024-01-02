@@ -2,16 +2,16 @@
 <button onclick="window.history.back()" class="bg-transparent border-none font-bold">&larr;{{ i18n "back" |
 	title}}</button>
 <h1 class="blog-title text-center mx-auto max-w-vw-5/6 text-4xl sm:text-5xl md:text-6xl">
-	{{ .Title }}
+	{{- .Title -}}
 </h1>
 {{- with .Params.subtitle -}}
 <h2
 	class="blog-subtitle text-center font-serif font-thin mx-auto mb-16 md:mt-16 md:mb-32 max-w-vw-11/12 text-2xl sm:text-3xl md:text-4xl">
-	{{ . }}
+	{{- . -}}
 </h2>
 {{ end }}
 <div class="blog-content leading-7 mb-12 mx-auto sm:max-w-vw-5/6 text-md">
-	{{ .Content }}
+	{{- .Content -}}
 </div>
 {{/* Previous / Next section */}}
 {{- if or (.PrevInSection) (.NextInSection) -}}
