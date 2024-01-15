@@ -14,13 +14,7 @@
                 <a href="{{ .url }}" title="{{ .name }}"
                 class="text-base text-gray-500 truncate dark:text-gray-400"
                 {{ if .blank }} target="_blank" {{ end }} {{ if strings.HasPrefix .url "http" }} rel="noopener" {{ end }}>
-                    {{- if not (eq .name "email") -}}
-                    {{- with urls.Parse .url -}}
-                    {{- slicestr .Path 1 -}}
-                    {{- end -}}
-                    {{- else -}}
-                    {{- $page.Params.email -}}
-                    {{- end -}}
+                    {{- .subname -}}
                 </a>
             </div>
         </div>
