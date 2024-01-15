@@ -8,10 +8,6 @@ const paths = menuBtn.getElementsByTagName("path");
 // Add a click event listener to the menu button
 menuBtn.addEventListener("click", toggleNavMenu);
 
-// Initial scroll position
-let prevScrollPos = window.scrollY;
-window.onscroll = handleScroll;
-
 function toggleNavMenu() {
   // Toggle the hidden class of the navigation menu
   navMenu.classList.toggle("hidden");
@@ -22,16 +18,19 @@ function toggleNavMenu() {
   }
 }
 
-function handleScroll() {
-  const currentScrollPos = window.scrollY;
-  if (!navMenu.classList.contains("hidden")) {
-    toggleNavMenu();
-  }
-  if (prevScrollPos > currentScrollPos) {
-    header.style.top = "0";
-  } else {
-    header.style.top = "-5rem";
-  }
-  
-  prevScrollPos = currentScrollPos;
-}
+// // Initial scroll position
+// let prevScrollPos = window.scrollY;
+// window.onscroll = handleScroll;
+// function handleScroll() {
+//   const currentScrollPos = window.scrollY;
+//   if (!navMenu.classList.contains("hidden")) {
+//     toggleNavMenu();
+//   }
+//   if (prevScrollPos > currentScrollPos) {
+//     header.style.top = "0";
+//   } else {
+//     header.style.top = "-5rem";
+//   }
+
+//   prevScrollPos = currentScrollPos;
+// }
