@@ -73,12 +73,22 @@
 				{{ if .required }} required {{ end }}
 				{{ printf "class='%s'" $class | safeHTMLAttr }}>
 			{{- else if eq .type "datetime-local" -}}
-			<input {{ printf "type=%q" .type | safeHTMLAttr }} {{ printf "name=%q" .name | safeHTMLAttr }}
-				{{ printf "id=%q" .name | safeHTMLAttr }} {{ printf "min=%q" .min_date | safeHTMLAttr }}
-				{{ $currDate := time.Now.Format "2006-01-02T15:04" }}
-				{{ printf "max=%q" $currDate | safeHTMLAttr }}
-				{{ if .required }} required {{ end }}
-				{{ printf "class='%s'" $class | safeHTMLAttr }}>
+			<div class="flex">
+				<div class="mr-2 w-1/2">
+					<input type="date" pattern="\d{2}-\d{2}-\d{4}"
+					{{ printf "name=%q" .name_date | safeHTMLAttr }} {{ printf "id=%q" .name_date | safeHTMLAttr }}
+					{{ printf "min=%q" .min_date | safeHTMLAttr }}
+					{{ printf "max=%q" .max_date | safeHTMLAttr }}
+					{{ if .required }} required {{ end }}
+					{{ printf "class='%s'" $class | safeHTMLAttr }}>
+				</div>
+				<div class="w-1/2">
+					<input type="time" pattern="[0-9]{2}:[0-9]{2}"
+					{{ printf "name=%q" .name_time | safeHTMLAttr }} {{ printf "id=%q" .name_time | safeHTMLAttr }}
+					{{ if .required }} required {{ end }}
+					{{ printf "class='%s'" $class | safeHTMLAttr }}>
+				</div>
+			</div>
 			{{- else -}}
 			{{- $type := .type | default "text" -}}
 			<input {{ printf "type=%q" .type | safeHTMLAttr }} {{ printf "name=%q" .name | safeHTMLAttr }}

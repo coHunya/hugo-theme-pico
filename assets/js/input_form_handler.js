@@ -25,14 +25,16 @@ function getFormElements() {
     let checkboxes = document.querySelectorAll('input[type="checkbox"]');
     let placeBirth = document.querySelector('input[name="place_birth"]');
     let dateBirth = document.querySelector('input[name="date_birth"]');
+    let timeBirth = document.querySelector('input[name="time_birth"]');
     let message = document.querySelector('textarea[name="message"]');
     let otherCheckbox = document.querySelector('input[name="other"]');
 
     let placeBirthLabel = document.querySelector('label[for="place_birth"]');
-    let dateBirthLabel = document.querySelector('label[for="date_birth"]');
+    let dateBirthLabel = document.querySelector('label[for="date_time_birth"]');
     let messageLabel = document.querySelector('label[for="message"]');
 
-    if (!checkboxes || !placeBirth || !dateBirth || !message || !placeBirthLabel || !dateBirthLabel || !messageLabel || !otherCheckbox) {
+    if (!checkboxes || !placeBirth || !dateBirth || !timeBirth || !message ||
+        !placeBirthLabel || !dateBirthLabel || !messageLabel || !otherCheckbox) {
         throw new Error('One or more elements are missing from the document.');
     }
 
@@ -40,6 +42,7 @@ function getFormElements() {
         checkboxes: checkboxes,
         placeBirth: placeBirth,
         dateBirth: dateBirth,
+        timeBirth: timeBirth,
         message: message,
         placeBirthLabel: placeBirthLabel,
         dateBirthLabel: dateBirthLabel,
@@ -68,6 +71,7 @@ function handleCheckboxChange(checkbox, formElements, asterisk) {
 function handleOtherCheckboxSelected(formElements, asterisk) {
     formElements.placeBirth.required = false;
     formElements.dateBirth.required = false;
+    formElements.timeBirth.required = false;
     formElements.message.required = true;
 
     formElements.placeBirthLabel.innerHTML = formElements.placeBirthLabel.innerHTML.replace(asterisk, '');
@@ -86,6 +90,7 @@ function handleOtherCheckboxSelected(formElements, asterisk) {
 function handleOtherCheckboxDeselected(formElements, asterisk) {
     formElements.placeBirth.required = true;
     formElements.dateBirth.required = true;
+    formElements.timeBirth.required = true;
     formElements.message.required = false;
 
     if (!formElements.placeBirthLabel.innerHTML.includes(asterisk)) {
