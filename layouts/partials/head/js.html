@@ -24,11 +24,15 @@
 {{- $js_bundle_local = $js_bundle_local | append (resources.Get "js/input_form_handler.js") -}}
 {{- end -}}
 
+{{- if gt (len $js_bundle_immediate) 0 -}}
 {{- $js_bundle_immediate = $js_bundle_immediate | resources.Concat "js/jorni_imm.min.js" | fingerprint "md5" -}}
 <script src="{{ $js_bundle_immediate.Permalink }}" intergrity="{{ $js_bundle_immediate.Data.Integrity }}" crossorigin="anonymous"></script>
+{{- end -}}
 
+{{- if gt (len $js_bundle_defer) 0 -}}
 {{- $js_bundle_defer = $js_bundle_defer | resources.Concat "js/jorni_def.min.js" | fingerprint "md5" -}}
 <script src="{{ $js_bundle_defer.Permalink }}" intergrity="{{ $js_bundle_defer.Data.Integrity }}" crossorigin="anonymous" defer></script>
+{{- end -}}
 
 {{- if gt (len $js_bundle_local) 0 -}}
 {{/*  {{- $jsName := printf "js/jorni_%s.min.js" (delimit (shuffle (seq 1 9)) "") -}}  */}}
