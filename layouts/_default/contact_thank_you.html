@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="flex flex-col min-h-screen justify-center py-6">
+    <div class="bg-accent px-6 pt-10 pb-8 shadow-xl ring-1 rounded-lg ring-gray-900/5 sm:mx-auto sm:max-w-lg  sm:px-10">
+        <div class="text-secondary-light">
+            <h1 class="mt-0">{{ .Title }}</h1>
+            <div>
+                {{ .Content }}
+            </div>
+            <p>
+                <a href="{{ "/" | relURL }}" class="no-underline font-semibold text-yellow-100">{{ .Params.subtitle }}</a>
+            </p>
+        </div>
+    </div>
+</div>
+{{ end }}
